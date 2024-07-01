@@ -1,0 +1,89 @@
+1. Explain the Linux boot process in detail. 
+The Linux boot process starts with the BIOS/UEFI initializing the hardware and loading the bootloader. The bootloader, such as GRUB or LILO, then loads the kernel into memory. The kernel initializes devices and mounts the root filesystem. Finally, init or systemd starts system services and user-space processes.
+
+2. Describe how to troubleshoot a Linux system that won't boot. 
+To troubleshoot a non-booting Linux system, you can boot into a live CD/USB and check disk integrity using fsck. Verify the bootloader configuration and look at log files in the /var/log directory for any error messages.
+
+3. How can you recover a root password on a Linux system? 
+To recover a root password, boot into single-user mode by editing the GRUB menu. Remount the root filesystem as read-write and use the passwd command to reset the root password.
+
+4. Explain the differences between ext4, XFS, and Btrfs file systems. 
+The ext4 file system is reliable and widely used, suitable for general use. XFS is excellent for handling large files and offers high performance. Btrfs provides advanced features like snapshots and pooling but is less mature compared to the other two.
+
+5. How do you optimize system performance in Linux? 
+Provide specific examples. To optimize system performance, monitor processes using top or htop, tune kernel parameters with sysctl, and optimize disk I/O with iotop and iostat. Use systemd-analyze to improve boot times.
+
+6. What are cgroups and namespaces in Linux, and how are they used in containerization? 
+Cgroups control and limit resource usage such as CPU, memory, and I/O, while namespaces isolate processes, including PID, network, and mount points. Together, they are used in containerization technologies like Docker and LXC.
+
+7. Describe the process of setting up and configuring a high-availability cluster in Linux. 
+To set up a high-availability cluster, install cluster software such as Pacemaker and Corosync. Configure resources and constraints, and set up fencing devices for node recovery.
+
+8. Explain the Linux kernel's role in managing hardware resources. 
+The Linux kernel manages CPU, memory, and I/O devices by providing an abstraction layer for hardware interaction. It handles scheduling, resource allocation, and interrupts.
+
+9. What are some advanced uses of awk and sed? Provide examples. 
+Advanced uses of awk include processing and analyzing text files and generating reports, such as filtering lines based on conditions. An example is awk '{if ($3 > 50) print $1}' file.txt. Advanced uses of sed include stream editing for text manipulation, such as replacing text patterns. An example is sed -e 's/old/new/g' file.txt.
+
+10. How do you secure a Linux server against unauthorized access and attacks? 
+To secure a Linux server, use strong passwords and key-based SSH authentication, regularly update the system, configure firewalls like iptables or firewalld, and implement SELinux or AppArmor for enhanced security.
+
+11. Describe the process of compiling and installing a custom Linux kernel. 
+To compile and install a custom Linux kernel, download the kernel source from kernel.org, configure kernel options using make menuconfig, compile with make, install with make install, and update the bootloader.
+
+12. What are SELinux and AppArmor, and how do they differ? 
+SELinux is policy-based and provides granular control, while AppArmor is path-based and easier to manage. Both enhance security by implementing mandatory access control.
+
+13. Explain the process of setting up and using LVM (Logical Volume Manager) in Linux. 
+To set up LVM, create physical volumes with pvcreate, create a volume group with vgcreate, and create logical volumes with lvcreate. Format and mount the logical volumes for use.
+
+14. How do you monitor and manage system logs effectively on a Linux server? 
+Use journalctl for systemd logs and configure rsyslog or syslog-ng for centralized logging. Monitor logs with tools like the ELK stack.
+
+15. What is the difference between soft limits and hard limits in ulimit? 
+How do you configure them? Soft limits warn users when a limit is reached, while hard limits are enforced by the kernel. Configure these limits in /etc/security/limits.conf.
+
+16. Describe the steps to create and manage RAID arrays in Linux. 
+To create and manage RAID arrays, install mdadm, create a RAID array using mdadm --create, and monitor and manage the array with mdadm --detail.
+
+17. How do you handle and troubleshoot disk I/O issues in Linux? 
+Use tools like iotop and iostat to identify disk I/O bottlenecks, check disk health with smartctl, and tune I/O scheduler and filesystem parameters.
+
+18. Explain the use of strace and lsof for debugging in Linux. 
+strace is used to trace system calls of a process, for example, strace -p <pid>. lsof lists open files and network connections, such as lsof -i.
+
+19. What are some best practices for managing and automating Linux system updates? 
+Use package managers like apt, yum, or dnf to manage updates. Automate updates with tools like unattended-upgrades and test updates in a staging environment before applying them to production.
+
+20. How do you set up network bonding and teaming in Linux? 
+Configure network bonding in /etc/network/interfaces for Debian-based systems or /etc/sysconfig/network-scripts for RHEL-based systems. Use nmcli for NetworkManager-based systems.
+
+21. Explain how to configure and troubleshoot NFS and Samba file sharing services. 
+Install and configure NFS server by editing /etc/exports, and Samba by editing /etc/samba/smb.conf. Manage permissions and shares for both services.
+
+22. Describe the use and configuration of iptables and firewalld. 
+Use iptables commands to manage firewall rules. For dynamic management, use firewall-cmd with firewalld.
+
+23. How do you manage and analyze performance metrics using tools like sar, iostat, and vmstat? 
+sar collects and reports system activity, iostat reports CPU and I/O statistics, and vmstat reports virtual memory statistics.
+
+24. What are some advanced techniques for memory management in Linux? 
+Monitor memory usage with tools like vmstat, free, and top. Tune parameters like swappiness and cache settings, and implement hugepages for performance improvements.
+
+25. Explain how to configure and optimize a Linux system for database workloads. 
+Tune kernel parameters for I/O performance, use appropriate file systems like XFS or ext4, and optimize database configurations such as buffer sizes and cache settings.
+
+26. Describe the process of setting up a central authentication system using LDAP. 
+Install OpenLDAP, configure it using slapd.conf or slapd.d, and populate the LDAP directory with user data.
+
+27. What are systemd unit files, and how do you create and manage them? 
+Systemd unit files define services and are located in /etc/systemd/system. Manage them with systemctl commands. A basic unit file includes sections for description, service execution, and installation.
+
+28. How do you perform a kernel upgrade on a critical production system with minimal downtime? 
+Schedule a maintenance window, test the new kernel on a staging environment, and use kexec for a rebootless upgrade if supported.
+
+29. Explain the process of migrating services from one Linux server to another. 
+Plan a migration strategy, sync data using tools like rsync or SCP, and test services on the new server before switching DNS or finalizing the migration.
+
+30. How do you handle filesystem corruption and recovery in Linux? 
+Use fsck to check and repair filesystems, restore from backups if necessary, and monitor filesystem health regularly to prevent future issues.
